@@ -3,6 +3,7 @@
 set -x
 set -e 
 
+SVN=/usr/bin/svnlite
 DIR=$1
 
 if [ -z $DIR ]; then
@@ -15,7 +16,7 @@ OBJDIR=$DIR/obj
 
 # checkout head if the source repository does not exist
 if [ ! -f ${SRCDIR}/README ]; then
-	svn checkout https://svn.freebsd.org/base/head ${SRCDIR}
+	${SVN} checkout https://svn.freebsd.org/base/head ${SRCDIR}
 fi
 
 export MAKEOBJDIRPREFIX=$OBJDIR
@@ -23,7 +24,7 @@ export MAKEOBJDIRPREFIX=$OBJDIR
 cd $SRCDIR
 echo "subversion update..."
 date
-svn update > ${DIR}/update.log 2>&1
+${SVN} update > ${DIR}/update.log 2>&1
 
 echo "buildworld..."
 date
