@@ -1,0 +1,6 @@
+*.log
+*.raw
+*.ufs
+*.img
+obj/
+src/

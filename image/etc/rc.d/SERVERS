@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# $FreeBSD: head/libexec/rc/rc.d/SERVERS 352999 2019-10-02 11:40:40Z trasz $
+#
+
+# PROVIDE: SERVERS
+# REQUIRE: mountcritremote sysvipc linux ldconfig savecore watchdogd
+
+#	This is a dummy dependency, for early-start servers relying on
+#	some basic configuration.
