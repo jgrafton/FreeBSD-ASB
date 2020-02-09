@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/sh
 
 IMAGE=freebsd.img
 VMNAME=freebsd
