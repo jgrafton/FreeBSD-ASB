@@ -13,6 +13,7 @@ fi
 
 SRCDIR=$DIR/src
 OBJDIR=$DIR/obj
+NCPU=`sysctl -n hw.ncpu`
 
 # checkout head if the source repository does not exist
 if [ ! -f ${SRCDIR}/README ]; then
@@ -28,7 +29,7 @@ ${SVN} update > ${DIR}/update.log 2>&1
 
 echo "buildworld..."
 date
-time make -j4 buildworld > ${DIR}/buildworld.log 2>&1
+time make -j${NCPU} buildworld > ${DIR}/buildworld.log 2>&1
 
 echo "buildkernel..."
 date
