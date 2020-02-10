@@ -5,7 +5,7 @@ set -e
 
 DIR=$1
 
-if [ -z $DIR ]; then
+if [ -z "$DIR" ]; then
 	echo "$0 [builddir]"
 	exit 1
 fi
@@ -50,10 +50,10 @@ if [ ${re} -ne 0 ]; then
 	exit 1
 fi
 
-cd $SRCDIR
+cd "$SRCDIR"
 
 # copy template config files into image
-cp -Rpv ${IMAGE_FILES}/* ${DESTDIR}
+cp -Rpv "${IMAGE_FILES}"/* ${DESTDIR}
 
 # install freebsd world and kernel into image
 make installworld DESTDIR=${DESTDIR}
@@ -62,7 +62,7 @@ make installkernel DESTDIR=${DESTDIR}
 # boot using comconsole 
 sysrc -f ${DESTDIR}/boot/loader.conf console=comconsole
 
-cd $DIR
+cd "$DIR"
 umount /mnt
 mdconfig -du md0
 
