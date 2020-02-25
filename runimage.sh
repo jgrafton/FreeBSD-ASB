@@ -1,12 +1,15 @@
 #!/bin/sh
 
+set -x
+set -e 
+
 IMAGE=freebsd.img
 VMNAME=freebsd
 CPUS=2
 MEM=512M
 
 # destroy old vm if one exists
-/usr/sbin/bhyvectl --vm=${VMNAME} --destroy
+/usr/sbin/bhyvectl --vm=${VMNAME} --destroy || true
 
 # load new vm
 /usr/sbin/bhyveload \

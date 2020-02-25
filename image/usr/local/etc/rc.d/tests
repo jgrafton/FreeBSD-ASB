@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# REQUIRE: NETWORKING sshd
+# PROVIDE: tests
+
+. /etc/rc.subr
+
+name="tests"
+rcvar="${name}_enable"
+start_cmd="tests_start"
+
+: ${tests_enable:="NO"}
+
+load_rc_config $name
+
+tests_start () {
+	/usr/local/bin/run_tests.sh > /dev/null 2>&1 &
+}
+
+run_rc_command "$1"
